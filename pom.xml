@@ -12,10 +12,7 @@
     </parent>
 
     <artifactId>fireflyframework-cache-postgres</artifactId>
-    <!-- Partial hotfix release: advances to 26.07.05 alongside fireflyframework-cache
-         (its only framework dependency, resolved via ${project.version}) to ship the
-         r2dbc ssl-mode wiring ahead of the next full CalVer train. -->
-    <version>26.07.05</version>
+    <version>26.07.04</version>
     <packaging>jar</packaging>
 
     <name>Firefly Framework - Cache - Postgres</name>
