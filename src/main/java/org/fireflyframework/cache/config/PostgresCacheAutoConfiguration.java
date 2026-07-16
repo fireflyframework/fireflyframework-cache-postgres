@@ -20,6 +20,7 @@ import io.r2dbc.pool.ConnectionPool;
 import io.r2dbc.pool.ConnectionPoolConfiguration;
 import io.r2dbc.postgresql.PostgresqlConnectionConfiguration;
 import io.r2dbc.postgresql.PostgresqlConnectionFactory;
+import io.r2dbc.postgresql.client.SSLMode;
 import io.r2dbc.spi.Connection;
 import io.r2dbc.spi.ConnectionFactory;
 import lombok.extern.slf4j.Slf4j;
@@ -80,6 +81,14 @@ public class PostgresCacheAutoConfiguration {
         }
         if (cfg.getSchema() != null) {
             builder.schema(cfg.getSchema());
+        }
+        // TLS: r2dbc-postgresql defaults to DISABLE. Servers that enforce SSL
+        // (e.g. AWS Aurora with rds.force_ssl) reject unencrypted connections
+        // ("no pg_hba.conf entry ... no encryption"). Map the configured mode
+        // when set, so consumers can opt into require/verify-* without a code
+        // change. Blank/null keeps the driver default (disable) for back-compat.
+        if (cfg.getSslMode() != null && !cfg.getSslMode().isBlank()) {
+            builder.sslMode(SSLMode.fromValue(cfg.getSslMode()));
         }
         if (cfg.getProperties() != null && !cfg.getProperties().isEmpty()) {
             Map<String, String> options = new HashMap<>();
