@@ -18,21 +18,6 @@
     <name>Firefly Framework - Cache - Postgres</name>
     <description>PostgreSQL R2DBC cache provider adapter for the Firefly Framework</description>
 
-    <!-- Partial-release override: fireflyframework-parent manages the sibling libraries
-         (observability, security-*) at ${project.version}, which now resolves to 26.07.05
-         and does not exist — only cache/cache-postgres advance in this partial release.
-         Observability is the only managed sibling reachable transitively (via cache), so
-         pin it back to the last full train (26.07.04). Remove on the next full CalVer train. -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.fireflyframework</groupId>
-                <artifactId>fireflyframework-observability</artifactId>
-                <version>26.07.04</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <!-- Firefly Cache core -->
         <dependency>
