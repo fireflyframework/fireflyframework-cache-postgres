@@ -7,12 +7,12 @@
     <parent>
         <groupId>org.fireflyframework</groupId>
         <artifactId>fireflyframework-parent</artifactId>
-        <version>26.07.03</version>
+        <version>26.07.04</version>
         <relativePath/>
     </parent>
 
     <artifactId>fireflyframework-cache-postgres</artifactId>
-    <version>26.07.03</version>
+    <version>26.07.04</version>
     <packaging>jar</packaging>
 
     <name>Firefly Framework - Cache - Postgres</name>
